@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f2e8">
+  <meta name="description" content="Генератор коротких абсурдных сказок на русском языке.">
+  <title>Modenov Randomize It!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Modenov Randomize It! — на главную">
+        <span class="brand-mark" aria-hidden="true">M<span>!</span></span>
+        <span class="brand-name">MODENOV<br>RANDOMIZE IT!</span>
+      </a>
+      <div class="top-actions">
+        <span class="session-note"><span class="status-dot"></span>СЕССИЯ СЛОВ АКТИВНА</span>
+        <button class="icon-button" id="theme-toggle" type="button" aria-label="Включить тёмную тему" title="Сменить тему">
+          <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.5A8.5 8.5 0 0 1 8.5 3.8 8.5 8.5 0 1 0 20.2 15.5Z"/></svg>
+        </button>
+        <button class="settings-button" id="open-settings" type="button"><span aria-hidden="true">☷</span> Параметры</button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="main-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span>АБСУРД В ПЯТИ СЛОВАХ</p>
+          <h1 id="main-title">Сказка случается<br><span>сама собой.</span></h1>
+          <p class="intro">Пять случайных слов — и вот уже кто-то<br class="desktop-break"> чинит ананас в планетарии.</p>
+        </div>
+        <div class="doodle doodle-star" aria-hidden="true">✳</div>
+        <div class="doodle doodle-spark" aria-hidden="true">✳</div>
+      </section>
+
+      <section class="generator-card" aria-label="Генератор сказок">
+        <div class="card-topline"><span><span class="live-indicator"></span> НОВАЯ ИСТОРИЯ</span><span class="counter" id="story-counter">СКАЗКА № 001</span></div>
+        <div class="story" id="story" aria-live="polite" aria-atomic="true">
+          <span class="story-placeholder">Кто-то где-то что-то<br>уже затеял…</span>
+        </div>
+        <div class="story-rule"><span></span><span class="rule-diamond">✦</span><span></span></div>
+        <div class="word-steps" aria-label="Схема предложения">
+          <div class="word-step"><span class="step-number">01</span><span class="step-label">Персонаж</span><span class="step-value" data-step="character">кто?</span></div>
+          <div class="step-separator" aria-hidden="true">+</div>
+          <div class="word-step"><span class="step-number">02</span><span class="step-label">Место</span><span class="step-value" data-step="place">где?</span></div>
+          <div class="step-separator" aria-hidden="true">+</div>
+          <div class="word-step"><span class="step-number">03</span><span class="step-label">Наречие</span><span class="step-value" data-step="adverb">как?</span></div>
+          <div class="step-separator" aria-hidden="true">+</div>
+          <div class="word-step"><span class="step-number">04</span><span class="step-label">Глагол</span><span class="step-value" data-step="verb">что делает?</span></div>
+          <div class="step-separator" aria-hidden="true">+</div>
+          <div class="word-step"><span class="step-number">05</span><span class="step-label">Объект</span><span class="step-value" data-step="object">что?</span></div>
+        </div>
+        <div class="card-actions">
+          <button class="generate-button" id="generate" type="button"><span class="dice" aria-hidden="true">⚄</span> Сгенерировать <span class="button-arrow" aria-hidden="true">↗</span></button>
+          <button class="copy-button" id="copy-story" type="button" disabled><span aria-hidden="true">▢</span> Скопировать</button>
+        </div>
+      </section>
+
+      <div class="under-card"><span>5 СПИСКОВ · 250 СЛОВ · БЕСКОНЕЧНЫЙ СЮЖЕТ</span><span class="under-decoration">НЕПРЕДСКАЗУЕМО, НО ГРАММАТИЧНО <span>↗</span></span></div>
+    </main>
+
+    <footer class="footer"><span>© Vladimir Modenov, 2026</span><span>СОБРАНО ИЗ ЧИСТОГО АБСУРДА <span aria-hidden="true">✳</span></span></footer>
+  </div>
+
+  <div class="modal-backdrop" id="settings-modal" hidden>
+    <section class="settings-panel" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+      <div class="settings-header">
+        <div><p class="eyebrow"><span class="eyebrow-line"></span>ВАША ФАБРИКА СЮЖЕТОВ</p><h2 id="settings-title">Параметры</h2></div>
+        <button class="icon-button close-button" id="close-settings" type="button" aria-label="Закрыть параметры">×</button>
+      </div>
+      <p class="settings-intro">Редактируйте слова или загрузите .txt. Один вариант на строку — ваши изменения живут в этой вкладке.</p>
+      <div class="list-editor" id="list-editor"></div>
+      <div class="settings-footer">
+        <button class="reset-button" id="reset-lists" type="button">Вернуть исходные списки</button>
+        <button class="save-button" id="save-lists" type="button">Сохранить списки <span aria-hidden="true">↗</span></button>
+      </div>
+      <p class="settings-feedback" id="settings-feedback" role="status"></p>
+    </section>
+  </div>
+</body>
+</html>
